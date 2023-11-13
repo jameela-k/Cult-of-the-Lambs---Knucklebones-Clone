@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width-device-width,initial-scale-1.0">
+    <title>Dice Roll - Cult of The Lamb Simple Edition </title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <header>
+        <audio id="myAudio" src="Sounds/knucklebones.mp3" loop="auto" ></audio>
+    </header>
+
+    
+    <div class="logo">
+        <img src="deco-images/bone.png" class="bone-deco"><h1>A Dice Game of Luck & Rewards </h1><img src="deco-images/bone.png" class="bone-deco">
+    </div>
+
+    <div class="reset-button">
+        <button id="reset-button">Reset</button>
+    </div>
+
+    <main class="container">
+        <div class="player-1">
+            <h2 class="current-player">The Lamb</h2>
+            <div class="the-main-character"><img src="deco-images/Lamb-red.png" class="lamb-img"> </div>
+            <h2 id="total-score1">5</h2>
+        <div id="p1parent" class="parent">
+            <img src="deco-images/left-on.png" class="board-right">
+            <img src="Dices/dice1.png" id="roller1" class="player1-dice-face" draggable="true" ondragstart="drag(event)" data-value="1">
+        </div>
+        </div>
+    </div>
+
+
+        <div class="game-board">
+        <div class="board1">
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="board2">
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="box2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        </div>
+
+        <div class="player-2">
+            <h2 class="current-player">Flinky</h2>
+            <div class="the-secondary-character"><img src="deco-images/Flinky-animation.png" class="flinky-img"></div>
+            <h2 id="total-score2">10</h2>
+        <div id="p2parent" class="parent">
+            <img src="deco-images/left-on.png" class="board-left">
+            <img src="Dices/dice1.png" id ="roller2" class="player2-dice-face" draggable="true" ondragstart="drag(event)" data-value="1">
+        </div>
+        </div>
+    </main>
+    <script src="Script.js"></script>
+</body>
+
+</html>

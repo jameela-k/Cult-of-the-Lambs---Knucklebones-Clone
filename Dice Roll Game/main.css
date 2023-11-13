@@ -1,0 +1,209 @@
+body {
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 22%, rgba(171,41,41,1) 50%, rgba(0,2,3,1) 82%);
+    color: aliceblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+
+header {
+    display: flex;
+    justify-content:end;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.bone-deco {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+}
+
+#reset-button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: black;/*Button Color*/
+    color: #FFF;
+    border-bottom: solid 4px brown;
+    border-radius: 3px;
+}
+
+.reset-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+  
+}
+
+.btnInfo-popup, .btnHow-popup {
+    background: transparent;
+    color: aliceblue;
+    border: 2px solid #fff;
+    cursor: pointer;
+    padding: 5px;
+    outline: none;
+}
+
+#total-score1, #total-score2 {
+    text-align: center;
+}
+
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box1, .box2 {
+    background-color: antiquewhite;
+    color: black;
+}
+
+.boardCellOne {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+
+.boardCellTwo {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+}
+
+.columncell {
+    display: flex;
+    flex-direction: row;
+}
+
+.board1 {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows:  100px 100px 100px;
+    gap: 10px;
+    margin-bottom: 90px;
+}
+
+.parent {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.board-right {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.player1-dice-face, .player2-dice-face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 30px;
+    left: 30px;
+    cursor: pointer;
+}
+
+.board2 {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    gap: 10px; 
+}
+
+.lamb-img, .flinky-img {
+    width: 150px;
+    height: 150px;
+}
+
+.the-main-character, .the-secondary-character {
+    display: flex;
+    justify-content: center;
+}
+
+.board-right {
+    width: 300px;
+    height: 175px;
+}
+
+.board-left {
+    width: 300px;
+    height: 175px;
+}
+
+.player-1 {
+  padding-left: 90px; 
+
+}
+
+.player-2{
+   padding-right: 90px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.current-player, .current-score {
+    display: flex;
+    justify-content: center;
+}
+
+.block {
+    position: initial !important;
+}
+
+@media (max-width:1600px){
+/* Default styles for larger screens */
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .player-1, .player-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Styles for smaller screens */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .logo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .player-1 .player-2 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
