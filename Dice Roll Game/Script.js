@@ -11,8 +11,8 @@ let playerOneBoxCount = 0;
 let playerTwoBoxCount = 0;
 
 // player's score
-let score1Element = document.getElementById("total-score1"); 
-let score2Element = document.getElementById("total-score2"); 
+let score1Element = document.getElementById("total-score1");
+let score2Element = document.getElementById("total-score2");
 
 score1Element.textContent = 0;
 score2Element.textContent = 0;
@@ -20,13 +20,37 @@ score2Element.textContent = 0;
 let currentPlayerElement = document.querySelector('current-player');
 
 // board's player
-const boardright = document.querySelector(".board-right"); 
-const boardleft = document.querySelector(".board-left"); 
+const boardright = document.querySelector(".board-right");
+const boardleft = document.querySelector(".board-left");
 
 // Dice image 
 const imageButton = document.getElementById("roller1");
 const imageButton2 = document.getElementById("roller2");
 const diceValue = imageButton.getAttribute("data-value");
+
+
+
+// create a function to display the current player
+// create a function to display the current player
+function displayCurrentPlayer(player) {
+    const currentPlayerEl = document.querySelector('#current-player');
+    if (currentPlayerEl) {
+        currentPlayerEl.textContent = `Current Player: ${player}`;
+    } else {
+        console.error('Element with id "current-player" not found');
+    }
+}
+
+// create a function to switch player
+function switchPlayer() {
+    if (currentPlayer === 2) {
+        currentPlayer = 1;
+    } else {
+        currentPlayer = 2;
+    }
+    // Update the display after switching
+    displayCurrentPlayer(currentPlayer === 1 ? "The Lamb" : "Flinky");
+}
 
 
 // create a function that the red lamb starts
@@ -70,25 +94,25 @@ function rollDicePlayer2() {
     } else {
         diceEl.src = "Dices/dice6.png";
     }
-     // set a data value to the imageButton element to the value of the dice roll 
-     diceEl.setAttribute('data-value', diceValue);
+    // set a data value to the imageButton element to the value of the dice roll 
+    diceEl.setAttribute('data-value', diceValue);
 }
 
 // drag the rolled dice into the selected box
 
-document.addEventListener("dragover", function(event) {
+document.addEventListener("dragover", function (event) {
     event.preventDefault();
 });
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
-  
+
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-    
+
 }
-  
+
 function drop(ev) {
     ev.preventDefault();
     console.log(`drop...`);
@@ -109,65 +133,65 @@ function drop(ev) {
     // and then do the things below
     ev.target.appendChild(newDiceElement);
     // Delete this element
-    originalDiceElement.remove(); 
+    originalDiceElement.remove();
     handleMove(diceValue);
 }
 
-function handleMove(diceValue){
+function handleMove(diceValue) {
     console.log(`handleMove`);
     createNewDice();
     // TODO Update Score using updateScore()
     updateScore(diceValue);
     // Check for winner
     const gameOver = isGameOver();
-    if(gameOver){
+    if (gameOver) {
         getWinner();
     } else {
         // TODO switch players 
         switchPlayer();
     }
 }
- 
+
 function createNewDice() {
-// Create a new img element
+    // Create a new img element
     const newDiceElement = document.createElement("img");
 
-// Set the src attribute of the new img element
+    // Set the src attribute of the new img element
     newDiceElement.src = "Dices/dice1.png";
 
-// TODO Change this so it adds the correct class names based on the current player
+    // TODO Change this so it adds the correct class names based on the current player
     // newDiceElement.classList.add("player1-dice-face");
     if (currentPlayer == 1) {
         newDiceElement.classList.add("player1-dice-face");
         // TODO add roller1 id to this
         newDiceElement.id = "roller1";
-        newDiceElement.addEventListener("click", function() {
+        newDiceElement.addEventListener("click", function () {
             rollDicePlayer1();
-            });
+        });
     } else {
         newDiceElement.classList.add("player2-dice-face");
         // TODO add roller2 id to this
         newDiceElement.id = "roller2";
-        newDiceElement.addEventListener("click", function() {
+        newDiceElement.addEventListener("click", function () {
             rollDicePlayer2();
-            });
+        });
     }
 
     newDiceElement.addEventListener("dragstart", drag);
     newDiceElement.setAttribute("draggable", "true");
- 
 
-// TODO Append the new img element to the desired location on the page
-// get handle on the appropriate parent element. Use if else
+
+    // TODO Append the new img element to the desired location on the page
+    // get handle on the appropriate parent element. Use if else
     let parentEl;
     //parentEl = document.getElementById()
-if (currentPlayer == 1) {
-    // Select the first parent element
-    parentEl = document.getElementById("p1parent");
-} else {
-    // Select the second parent element
-    parentEl = document.getElementById("p2parent");
-}
+    if (currentPlayer == 1) {
+        // Select the first parent element
+        parentEl = document.getElementById("p1parent");
+    } else {
+        // Select the second parent element
+        parentEl = document.getElementById("p2parent");
+    }
     parentEl.appendChild(newDiceElement);
 }
 
@@ -183,34 +207,26 @@ function updateScore(diceValue) {
         playerTwoBoxCount++;
     }
 
-    updateTotalScoreDisplay();   
+    updateTotalScoreDisplay();
 }
 
 function updateTotalScoreDisplay() {
-        // Update the total score display for player 1
-        console.log(`score: ${playerOneScore}`)
-        const score1Element = document.getElementById("total-score1");
-        score1Element.textContent = playerOneScore;
-    
-        // Update the total score display for player 2
-        const score2Element = document.getElementById("total-score2");
-        score2Element.textContent = playerTwoScore;
-    } 
+    // Update the total score display for player 1
+    console.log(`score: ${playerOneScore}`)
+    const score1Element = document.getElementById("total-score1");
+    score1Element.textContent = playerOneScore;
 
-// create a function to switch player
-function switchPlayer() {
-  if (currentPlayer == 1) {
-      currentPlayer = 2;
-  } else {
-      currentPlayer = 1;
-    }
-  }
+    // Update the total score display for player 2
+    const score2Element = document.getElementById("total-score2");
+    score2Element.textContent = playerTwoScore;
+}
+
 // determine if the game is over
-  function isGameOver(){
+function isGameOver() {
     console.log(`box count 1: ${playerOneBoxCount}`);
     console.log(`box count 3: ${playerTwoBoxCount}`);
     return playerOneBoxCount === 9 && playerTwoBoxCount === 9;
-}  
+}
 
 // the player who places their dice on the ninth box to finish the game will win unless their opponent has a higher total score 
 function getWinner() {
@@ -219,18 +235,18 @@ function getWinner() {
     console.log('playerTwoScore:', playerTwoScore);
     let winner;
     if (playerOneScore > playerTwoScore) {
-        winner = 'The Lambs Wins!';
+        winner = 'The Lamb wins!';
     } else if (playerTwoScore > playerOneScore) {
-        winner = 'Flinky Wins!';
+        winner = 'Flinky wins!';
     } else {
-        winner = 'A tie!';
+        winner = 'It\'s a tie! Boho!';
     }
-    alert(winner);
+
+    displayWinnerMessage(winner);
 }
 
 
 function resetGame() {
-    let resetButton = document.getElementById('reset-button');
     // Reset the game state
     currentPlayer = 1;
     totalScore = 0;
@@ -243,29 +259,47 @@ function resetGame() {
     score1Element.textContent = 0;
     score2Element.textContent = 0;
 
+    // Reset the display of current player
+    displayCurrentPlayer("The Lamb");
+
+    // Remove any existing dice elements from the board
+    const diceElements = document.querySelectorAll('.block');
+    diceElements.forEach(element => element.remove());
+
     // Add any additional code here to reset other elements on your page
-
-
-    resetButton.addEventListener('click', resetGame);
 }
+
+// Call the resetGame function when the reset button is clicked
+const resetButton = document.getElementById('reset-button');
+resetButton.addEventListener('click', resetGame);
+
+function displayWinnerMessage(message) {
+    const winnerMessageElement = document.getElementById('winner-message');
+    winnerMessageElement.textContent = message;
+}
+
+
 
 // TODO Create function to handle click event  
 
-function removeListeners(){
+function removeListeners() {
 }
 
-function startGame(){
+function startGame() {
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     startGame();
-    imageButton.addEventListener("click", function() {
+
+    displayCurrentPlayer(currentPlayer);
+
+    imageButton.addEventListener("click", function () {
         rollDicePlayer1();
     });
 
-    imageButton2.addEventListener("click", function() {
+    imageButton2.addEventListener("click", function () {
         rollDicePlayer2();
-     });    
+    });
 
 });
 

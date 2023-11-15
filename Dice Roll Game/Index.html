@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width-device-width,initial-scale-1.0">
     <title>Dice Roll - Cult of The Lamb Simple Edition </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" />
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
 
     <header>
-        <audio id="myAudio" src="Sounds/knucklebones.mp3" loop="auto" ></audio>
+        <!-- <div id="audio-controls">
+            <button id="audio-toggle">Toggle Audio</button>
+            <audio id="myAudio" src="Sounds/knucklebones.mp3" loop="auto" controls></audio>
+          </div> -->
     </header>
 
     
@@ -19,9 +23,17 @@
         <img src="deco-images/bone.png" class="bone-deco"><h1>A Dice Game of Luck & Rewards </h1><img src="deco-images/bone.png" class="bone-deco">
     </div>
 
+    <div class="skulls">
+        <img src="deco-images/skulls.png" class="deco-skulls">
+    </div>
+
+    <div id="winner-message"></div>
+
     <div class="reset-button">
         <button id="reset-button">Reset</button>
     </div>
+
+    <div id="current-player">Current Player: </div>
 
     <main class="container">
         <div class="player-1">
